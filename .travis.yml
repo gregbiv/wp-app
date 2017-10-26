@@ -24,6 +24,11 @@ install:
 script:
   - composer test
 
+branches:
+  only:
+    - development
+    - master
+
 deploy:
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
