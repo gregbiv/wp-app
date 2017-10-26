@@ -1,5 +1,5 @@
 # [WP-Blog](https://kornienko.site/)
-[![Build Status](https://img.shields.io/travis/gregbiv/wp-blog.svg?style=flat-square)](https://travis-ci.org/gregbiv/wp-blog)
+[![Build Status](https://img.shields.io/travis/gregbiv/wp-blog.svg?branch=master)](https://travis-ci.org/gregbiv/wp-blog)
 
 WP-blog is yet another one blog based on WordPress
 
