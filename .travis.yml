@@ -21,14 +21,11 @@ before_install:
 install:
   - composer install -o --prefer-dist --no-interaction
 
-before_script:
-  - export PATH="$TRAVIS_BUILD_DIR/_build:$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
-
 script:
   - composer test
 
 before_deploy:
-  - create-release-archive.sh "$TRAVIS_TAG"
+  - ./create-release-archive.sh "$TRAVIS_TAG"
 
 deploy:
   provider: releases

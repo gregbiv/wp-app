@@ -23,19 +23,11 @@ if [ -e "$ARCHIVE" ]; then
     exit 1
 fi
 
-INDEX_BACKUP="$(mktemp -u)"
-mv index.php "$INDEX_BACKUP"
-mv index.php.dist index.php
-
 tar -czf "$ARCHIVE" \
     README.md LICENSE.md CONTRIBUTING.md CHANGELOG.md \
     composer.json composer.lock \
-    config web vendor \
-    .htaccess index.php
+    config web vendor
 EXIT=$?
-
-mv index.php index.php.dist
-mv "$INDEX_BACKUP" index.php
 
 echo
 
