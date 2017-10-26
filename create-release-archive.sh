@@ -24,7 +24,7 @@ if [ -e "$ARCHIVE" ]; then
 fi
 
 tar -czf "$ARCHIVE" \
-    README.md LICENSE.md CONTRIBUTING.md CHANGELOG.md \
+    README.md LICENSE.md CHANGELOG.md \
     composer.json composer.lock \
     config web vendor
 EXIT=$?
