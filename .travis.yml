@@ -23,3 +23,12 @@ install:
 
 script:
   - composer test
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: wp-blog-$TRAVIS_TAG.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+    php: 5.3
