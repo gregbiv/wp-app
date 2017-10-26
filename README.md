@@ -1,7 +1,7 @@
 # [WP-Blog](https://kornienko.site/)
-[![Build Status](https://img.shields.io/travis/gregbiv/kornienko-blog.svg?style=flat-square)](https://travis-ci.org/gregbiv/kornienko-blog)
+[![Build Status](https://img.shields.io/travis/gregbiv/wp-blog.svg?style=flat-square)](https://travis-ci.org/gregbiv/wp-blog)
 
-WP-blog is yet another one blog WordPress
+WP-blog is yet another one blog based on WordPress
 
 ## Features
 
@@ -40,3 +40,6 @@ Methods to deploy WP-blog:
 ## Contributing
 
 Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
+
+## License
+[MIT](https://github.com/gregbiv/wp-blog/blob/master/LICENSE.md)
