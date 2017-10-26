@@ -24,11 +24,6 @@ install:
 script:
   - composer test
 
-branches:
-  only:
-    - development
-    - master
-
 deploy:
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
@@ -36,4 +31,5 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    php: 5.3
+    all_branches: true
+    php: 7.1
