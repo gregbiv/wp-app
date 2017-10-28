@@ -1,9 +1,9 @@
 {
-  "name": "gregbiv/kornienko-blog",
+  "name": "gregbiv/wp-blog",
   "type": "project",
   "license": "MIT",
   "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
-  "homepage": "https://kornienko-blog.site",
+  "homepage": "https://kornienko.site",
   "authors": [
     {
       "name": "Gregory Kornienko",
@@ -15,7 +15,7 @@
     "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
   ],
   "support": {
-    "issues": "https://github.com/gregbiv/kornienko-blog/issues",
+    "issues": "https://github.com/gregbiv/wp-blog/issues",
     "forum": "https://discourse.roots.io/category/bedrock"
   },
   "config": {
@@ -31,9 +31,11 @@
     "php": ">=5.6",
     "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "4.8.2",
+    "johnpbloch/wordpress-core-installer": "^1.0",
+    "johnpbloch/wordpress-core": "dev-master",
     "oscarotero/env": "^1.1.0",
-    "roots/wp-password-bcrypt": "1.0.0"
+    "roots/wp-password-bcrypt": "1.0.0",
+    "wpackagist-theme/wp-bootstrap-starter": "^v2.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"
@@ -42,7 +44,7 @@
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+      "web/app/themes/{$name}/": ["type:wordpress-theme", "voyager"]
     },
     "wordpress-install-dir": "web/wp"
   },
