@@ -54,7 +54,7 @@
       "php -r \"copy('.env.example', '.env');\""
     ],
     "test": [
-      "vendor/bin/phpcs --ignore=web/app/,vendor/ -n -s ."
+      "vendor/bin/phpcs --ignore=web/app/,vendor/,data/migrations -n -s ."
     ]
   }
 }
