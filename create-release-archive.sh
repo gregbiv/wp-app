@@ -26,7 +26,7 @@ fi
 tar -czf "$ARCHIVE" \
     README.md LICENSE.md CHANGELOG.md \
     composer.json composer.lock \
-    config web vendor
+    config web vendor data
 EXIT=$?
 
 echo
