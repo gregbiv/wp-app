@@ -45,7 +45,7 @@
     "installer-paths": {
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme", "voyager"]
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
     },
     "wordpress-install-dir": "web/wp"
   },
@@ -54,7 +54,7 @@
       "php -r \"copy('.env.example', '.env');\""
     ],
     "test": [
-      "vendor/bin/phpcs"
+      "vendor/bin/phpcs --ignore=web/app/,vendor/ -n -s ."
     ]
   }
 }
