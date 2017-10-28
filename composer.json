@@ -35,7 +35,8 @@
     "johnpbloch/wordpress-core": "dev-master",
     "oscarotero/env": "^1.1.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "wpackagist-theme/wp-bootstrap-starter": "^v2.2"
+    "wpackagist-theme/wp-bootstrap-starter": "^v2.2",
+    "robmorgan/phinx": "^0.9.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"
