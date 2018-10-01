@@ -76,6 +76,20 @@ define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 define('DISALLOW_FILE_EDIT', true);
 
 /**
+ * Multisite
+ */
+define('WP_ALLOW_MULTISITE', true);
+if(defined('WP_MULTISITE_INSTALLED')) {
+    define('MULTISITE', true);
+    define('SUBDOMAIN_INSTALL', true);
+    define('DOMAIN_CURRENT_SITE', env('WP_DOMAIN_NAME'));
+    define('PATH_CURRENT_SITE', '/wp/');
+    define('SITE_ID_CURRENT_SITE', 1);
+    define('BLOG_ID_CURRENT_SITE', 1);
+    define('SUNRISE', 'on');
+}
+
+/**
  * Bootstrap WordPress
  */
 if (!defined('ABSPATH')) {
