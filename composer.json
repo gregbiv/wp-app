@@ -15,8 +15,7 @@
     "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
   ],
   "support": {
-    "issues": "https://github.com/gregbiv/wp-blog/issues",
-    "forum": "https://discourse.roots.io/category/bedrock"
+    "issues": "https://github.com/gregbiv/wp-blog/issues"
   },
   "config": {
     "preferred-install": "dist"
@@ -35,8 +34,11 @@
     "johnpbloch/wordpress-core": "dev-master",
     "oscarotero/env": "^1.1.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "wpackagist-theme/wp-bootstrap-starter": "^v2.2",
-    "robmorgan/phinx": "^0.9.1"
+    "wpackagist-plugin/wp-redis": "*",
+    "wpackagist-theme/wp-bootstrap-starter": "^v3.0",
+    "wpackagist-plugin/wordpress-mu-domain-mapping": "^0.5.5",
+    "robmorgan/phinx": "^0.9.1",
+    "koodimonni/composer-dropin-installer": "dev-master"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"
@@ -46,6 +48,16 @@
       "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "dropin-paths": {
+      "web/wp/wp-content/languages/": ["type:wordpress-language"],
+      "web/wp/wp-content/languages/plugins/": ["vendor:wordpress-plugin-language"],
+      "web/wp/wp-content/languages/themes/": ["vendor:wordpress-theme-language"],
+      "web/wp/wp-content/": [
+        "package:wpackagist-plugin/wp-redis:object-cache.php",
+        "package:wpackagist-plugin/wordpress-mu-domain-mapping:sunrise.php",
+        "type:wordpress-dropin"
+      ]
     },
     "wordpress-install-dir": "web/wp"
   },
