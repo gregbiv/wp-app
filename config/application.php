@@ -79,7 +79,7 @@ define('DISALLOW_FILE_EDIT', true);
  * Multisite
  */
 define('WP_ALLOW_MULTISITE', true);
-if(defined('WP_MULTISITE_INSTALLED')) {
+if (defined('WP_MULTISITE_INSTALLED')) {
     define('MULTISITE', true);
     define('SUBDOMAIN_INSTALL', true);
     define('DOMAIN_CURRENT_SITE', env('WP_DOMAIN_NAME'));
