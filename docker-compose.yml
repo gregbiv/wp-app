@@ -1,23 +1,30 @@
 version: '2'
 services:
+  app:
+    build:
+      context: ./
+    volumes:
+      - ./:/server/http
+    working_dir: /server/http
+    networks:
+      - wpnet
+
   nginx:
-    image: hoangstark/bedrock-nginx:latest
+    image: nginx:alpine
+    volumes:
+      - ./:/server/http
+      - ./docker/nginx:/etc/nginx/conf.d
+    links:
+      - app
     ports:
-     - "80:80"
-    volumes:
-     - .:/usr/share/nginx/html
+      - "80:80"
     networks:
-     - wpnet
-  php:
-    image: hoangstark/bedrock-php:latest
-    volumes:
-     - .:/usr/share/nginx/html
-    networks:
-     - wpnet
+      - wpnet
+
   mysql:
     image: mysql:5.7
     ports:
-      - 127.0.0.1:3306:3306 # change ip if required
+     - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: wordpress
