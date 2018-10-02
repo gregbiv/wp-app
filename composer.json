@@ -52,7 +52,8 @@
     "composer-plugin-api": "1.1.0",
     "johnpbloch/wordpress": "*",
     "robmorgan/phinx": "^0.9.1",
-    "vlucas/phpdotenv": "~2.0.1",
+    "vlucas/phpdotenv": "^2.0.1",
+    "oscarotero/env": "^1.1.0",
 
     "anolilab/wordpress-salt-generator": "~1.2",
     "koodimonni/composer-dropin-installer": "^1.2",
