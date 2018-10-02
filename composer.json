@@ -12,61 +12,93 @@
     }
   ],
   "keywords": [
-    "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
+    "wordpress",
+    "stack",
+    "composer",
+    "vagrant",
+    "wp"
   ],
   "support": {
     "issues": "https://github.com/gregbiv/wp-blog/issues"
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "dropin-installer": "copy",
+    "generate-salts": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Anolilab\\Wordpress\\SaltGenerator\\Generator::addSalts"
+    ],
+    "check-cs": "sh vendor/bin/php-cs-fixer fix -v --dry-run",
+    "fix-cs": "sh vendor/bin/php-cs-fixer fix",
+    "test": [
+      "vendor/bin/phpcs --ignore=web/app/,vendor/,data/migrations -n -s ."
+    ]
   },
   "repositories": [
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://wp-languages.github.io"
     }
   ],
   "require": {
     "php": ">=5.6",
-    "composer/installers": "^1.4",
-    "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress-core-installer": "^1.0",
-    "johnpbloch/wordpress-core": "dev-master",
-    "oscarotero/env": "^1.1.0",
-    "roots/wp-password-bcrypt": "1.0.0",
-    "wpackagist-plugin/wp-redis": "*",
-    "wpackagist-theme/wp-bootstrap-starter": "^v3.0",
-    "wpackagist-plugin/wordpress-mu-domain-mapping": "^0.5.5",
+    "composer/installers": "^1.6",
+    "composer-plugin-api": "1.1.0",
+    "johnpbloch/wordpress": "*",
     "robmorgan/phinx": "^0.9.1",
-    "koodimonni/composer-dropin-installer": "dev-master"
+    "vlucas/phpdotenv": "~2.0.1",
+
+    "anolilab/wordpress-salt-generator": "~1.2",
+    "koodimonni/composer-dropin-installer": "^1.2",
+    "koodimonni-language/core-ru_ru": "*",
+    "koodimonni-language/core-en_gb": "*",
+    "gwa/wp-disable-auto-update": "~1.0",
+    "gwa/multisite-directory-resolver": "~2.1",
+
+    "wpackagist-theme/wp-bootstrap-starter": "^v3.0",
+
+    "wpackagist-plugin/redis-cache": "*",
+    "wpackagist-plugin/debug-bar": "~0.9",
+    "wpackagist-plugin/debug-bar-post-types": "~2.0",
+    "wpackagist-plugin/log-deprecated-notices": "~0.3"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.0.2"
+    "squizlabs/php_codesniffer": "^3.0.2",
+    "fabpot/php-cs-fixer": "~1.11"
   },
   "extra": {
     "installer-paths": {
-      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
-    },
-    "dropin-paths": {
-      "web/wp/wp-content/languages/": ["type:wordpress-language"],
-      "web/wp/wp-content/languages/plugins/": ["vendor:wordpress-plugin-language"],
-      "web/wp/wp-content/languages/themes/": ["vendor:wordpress-theme-language"],
-      "web/wp/wp-content/": [
-        "package:wpackagist-plugin/wp-redis:object-cache.php",
-        "package:wpackagist-plugin/wordpress-mu-domain-mapping:sunrise.php",
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin",
         "type:wordpress-dropin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
       ]
     },
-    "wordpress-install-dir": "web/wp"
+    "dropin-paths": {
+      "web/app/languages/": [
+        "type:wordpress-language"
+      ],
+      "web/app/languages/plugins/": [
+        "type:wordpress-plugin-language"
+      ],
+      "web/app/languages/themes/": [
+        "type:wordpress-theme-language"
+      ]
+    },
+    "wordpress-install-dir": "web/wp",
+    "wordpress-languages-dir": "web/app/languages/"
   },
-  "scripts": {
-    "post-root-package-install": [
-      "php -r \"copy('.env.example', '.env');\""
-    ],
-    "test": [
-      "vendor/bin/phpcs --ignore=web/app/,vendor/,data/migrations -n -s ."
-    ]
-  }
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

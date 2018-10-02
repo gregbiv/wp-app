@@ -7,6 +7,8 @@ RUN set -ex \
     && apk add --no-cache libpq libmcrypt libmcrypt-dev fcgi make curl git zip\
     && apk add --no-cache --virtual .build-dependencies ${PHPIZE_DEPS} mysql-dev\
     && docker-php-ext-install bcmath mcrypt opcache pdo_mysql mysqli \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
     && apk del .build-dependencies
 
 # Install XDEBUG
