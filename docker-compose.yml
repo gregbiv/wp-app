@@ -6,6 +6,21 @@ services:
     volumes:
       - ./:/server/http
     working_dir: /server/http
+    environment:
+      SERVICE_NAME: kornienko
+      SERVICE_CHECK_HTTP: '/'
+      SERVICE_CHECK_INTERVAL: '5s'
+
+      APP_ENV: dev
+      APP_PATH: /server/http
+      APP_DEBUG: 'true'
+      APP_NAME: kornienko
+    networks:
+      front:
+        ipv4_address: 172.16.238.11
+    extra_hosts:
+     - "kornienko.test:172.16.238.10"
+     - "design.kornienko.test:172.16.238.10"
 
   nginx:
     image: nginx:alpine
@@ -16,11 +31,9 @@ services:
       - app
     ports:
       - "80:80"
-
-  redis:
-      image: redis:3.2-alpine
-      ports:
-          - "6379:6379"
+    networks:
+      front:
+        ipv4_address: 172.16.238.10
 
   mysql:
     image: mysql:5.7
@@ -33,3 +46,19 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
      - ./web/app/uploads/docker-mysqldb:/var/lib/mysql
+    networks:
+      front:
+
+networks:
+  front:
+    # use the bridge driver, but enable IPv6
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.238.0/24"
+          gateway: "172.16.238.1"
+        - subnet: "2001:3984:3989::/64"
+          gateway: "2001:3984:3989::1"
