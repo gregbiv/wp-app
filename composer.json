@@ -64,6 +64,7 @@
 
     "wpackagist-theme/wp-bootstrap-starter": "^v3.0",
 
+    "wpackagist-plugin/ga-google-analytics": "*",
     "wpackagist-plugin/redis-cache": "*",
     "wpackagist-plugin/debug-bar": "~0.9",
     "wpackagist-plugin/debug-bar-post-types": "~2.0",
